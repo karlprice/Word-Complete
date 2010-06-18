@@ -7,7 +7,25 @@
   <script type="text/javascript" src="jquery-autocomplete/lib/jquery.bgiframe.min.js"></script>
   <script type="text/javascript" src="jquery-autocomplete/jquery.autocomplete.js"></script>
   <style type="text/css">
-
+		#wrapper {
+			text-align: center;
+			}
+			
+		#faux-form {
+			padding-top: 30px;
+			}
+			
+		#realtime_list {
+			padding-top: 20px;
+			}
+			
+		#response {
+			padding: 20px;
+			}
+			
+		h1 {
+			font-size: 14pt;
+			}
   </style>
   
   <script type="text/javascript">
@@ -54,10 +72,14 @@
   
 </head>
 <body>
-	<p>Type name.</p>
-	<input id="card_name" />
-	<input type="button" value="Write File" onClick="sub(); output = '';" />
-  <div id="response"></div>
-  <div id="realtime_list"></div>
+	<div id="wrapper">
+		<h1>Type name.</h1>
+		<div id="faux-form">
+		<input id="card_name" />
+		<input type="button" value="Write File" onClick="sub(); output = '';" />
+		</div>
+		<div id="response"></div>
+		<div id="realtime_list"></div>
+  </div>
 </body>
 </html>
