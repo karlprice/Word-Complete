@@ -55,8 +55,8 @@
 		$('#card_name').keypress(function(event) {
 			if (event.keyCode == '13') {
 				 output += "\n" + $(this).val();
-				 outlist = $(this).val() + "<br>" + outlist;
-				 $('#realtime_list').html(outlist);
+				 var ol = $('#card_name').val() + "<br>" + $('#realtime_list').html()
+				 $('#realtime_list').html( ol	);
 				 $(this).val('');
 			 }
 		});
@@ -65,7 +65,15 @@
 
 	function sub () {
 		dat = $("#realtime_list").html();
-		$("#response").load("write.php?dat="+dat)
+		//$("#response").load("write.php?dat="+dat)
+		$.post( 
+					"write.php",
+					{stuff: dat},
+					function(data) {
+						$("#realtime_list").html(data);
+						}
+					)
+		
 	}
 
   </script>

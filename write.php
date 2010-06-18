@@ -1,5 +1,5 @@
 <?php
-	$output = $_GET['dat'];
+	$output = $_POST['stuff'];
 	
 	$output = str_replace( "<br>", "\n", $output);
 	
