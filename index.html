@@ -32,30 +32,24 @@
     	});
 
 		var output = "";	
+		var outlist = "";
 		
 		$('#card_name').keypress(function(event) {
 			if (event.keyCode == '13') {
 				 output += "\n" + $(this).val();
-				 $('#realtime_list').html(output);
+				 outlist = $(this).val() + "<br>" + outlist;
+				 $('#realtime_list').html(outlist);
 				 $(this).val('');
 			 }
 		});
 	
 		});
-	/*	
-	function sub (dat) {
-		$.ajax({
-      type: "POST",
-      url: "write.php",
-      data: dat,
-      dataType: "text",
-     	success : function(data) {
-      	l = data;
-      	}
 
-    	});
+	function sub () {
+		dat = $("#realtime_list").html();
+		$("#response").load("write.php?dat="+dat)
 	}
-		*/
+
   </script>
   
 </head>
@@ -63,6 +57,7 @@
 	<p>Type name.</p>
 	<input id="card_name" />
 	<input type="button" value="Write File" onClick="sub(); output = '';" />
+  <div id="response"></div>
   <div id="realtime_list"></div>
 </body>
 </html>
