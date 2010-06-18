@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="jquery-autocomplete/demo/main.css" type="text/css" />
+  <link rel="stylesheet" href="jquery-autocomplete/jquery.autocomplete.css" type="text/css" />
+  <script type="text/javascript" src="jquery-autocomplete/lib/jquery.bgiframe.min.js"></script>
+  <script type="text/javascript" src="jquery-autocomplete/jquery.autocomplete.js"></script>
+  <style type="text/css">
+
+  </style>
+  
+  <script type="text/javascript">
+  
+  $(document).ready(function(){
+  
+  	// Load list.txt to list
+  	var l;
+  	
+		$.ajax({
+      type: "GET",
+      url: "list.txt",
+      dataType: "text",
+     	success : function(data) {
+      	l = data;
+      	l = l.split("\n");
+      	$("#card_name").autocomplete(l);
+      	},
+      	
+      
+
+    	});
+
+		var output = "";	
+		
+		$('#card_name').keypress(function(event) {
+			if (event.keyCode == '13') {
+				 output += "\n" + $(this).val();
+				 $('#realtime_list').html(output);
+				 $(this).val('');
+			 }
+		});
+	
+		});
+	/*	
+	function sub (dat) {
+		$.ajax({
+      type: "POST",
+      url: "write.php",
+      data: dat,
+      dataType: "text",
+     	success : function(data) {
+      	l = data;
+      	}
+
+    	});
+	}
+		*/
+  </script>
+  
+</head>
+<body>
+	<p>Type name.</p>
+	<input id="card_name" />
+	<input type="button" value="Write File" onClick="sub(); output = '';" />
+  <div id="realtime_list"></div>
+</body>
+</html>
